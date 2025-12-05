@@ -69,12 +69,12 @@ Monro      | Houdhury  | Indonesia  | Mazda     | Miata MX-5     | Orange    | 2
 
 🧪 Example Code Snippets
 
---Connect to Google Drive
+### Connect to Google Drive
 
 from google.colab import drive
 drive.mount('/content/drive')
 
---Load the file path -
+### Load the file path -
 cars_data = '/content/drive/MyDrive/Cars Dataset/cars.csv'
 
 --import Libraries
