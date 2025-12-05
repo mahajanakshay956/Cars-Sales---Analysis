@@ -49,32 +49,27 @@ Crystal    | Bosworth  | China      | Cadillac  | Escalade ESV   | Fuscia    | 2
 Monro      | Houdhury  | Indonesia  | Mazda     | Miata MX-5     | Orange    | 2009 | maestro           | 91498
 
 🎯 Potential Use Cases
+
 📈 Data Analysis
-
-Exploratory Data Analysis (EDA)
-
-Summary statistics and trend identification
-
-Categorical distribution analysis
+- Exploratory Data Analysis (EDA)
+- Summary statistics and trend identification
+- Categorical distribution analysis
 
 🛠️ Data Engineering
 
-ETL practice
-
-Cleaning and preprocessing exercises
-
-Data integration and transformation workflows
+- ETL practice
+- Cleaning and preprocessing exercises
+- Data integration and transformation workflows
 
 📊 Visualization Projects
 
-Dashboards with Plotly / Power BI / Tableau
-
-Price distribution charts
-
-Brand popularity or color frequency charts
+- Dashboards with Plotly / Power BI / Tableau
+- Price distribution charts
+- Brand popularity or color frequency charts
 
 🧪 Example Code Snippets
-#Connect to Google Drive
+
+--Connect to Google Drive
 
 from google.colab import drive
 drive.mount('/content/drive')
