@@ -41,13 +41,6 @@ Mix of categorical and numerical features:
 
 Data is clean and ready for analysis without preprocessing.
 
-📌 Sample Data
-First Name | Last Name | Country    | Car Brand | Car Model      | Car Color | Year | Credit Card Type | Price
-----------------------------------------------------------------------------------------------------------------
-Yetty      | Arghent   | Indonesia  | Ford      | Club Wagon     | Teal      | 1993 | mastercard        | 100327
-Crystal    | Bosworth  | China      | Cadillac  | Escalade ESV   | Fuscia    | 2007 | mastercard        | 70719
-Monro      | Houdhury  | Indonesia  | Mazda     | Miata MX-5     | Orange    | 2009 | maestro           | 91498
-
 🎯 Potential Use Cases
 
 📈 Data Analysis
@@ -67,98 +60,134 @@ Monro      | Houdhury  | Indonesia  | Mazda     | Miata MX-5     | Orange    | 2
 - Price distribution charts
 - Brand popularity or color frequency charts
 
-🧪 Example Code Snippets
+## 🧪 Example Code Snippets (EDA)
 
 ### Connect to Google Drive
 
 from google.colab import drive
+
 drive.mount('/content/drive')
 
 ### Load the file path -
 cars_data = '/content/drive/MyDrive/Cars Dataset/cars.csv'
 
---import Libraries
+### import Libraries
 import pandas as pd
+
 import numpy as np
+
 import matplotlib.pyplot as plt
+
 import seaborn as sns
 
---Convert to dataframe
+### Convert to dataframe
 df_cars = pd.read_csv(cars_data)
 
 df_cars.info()
 
 df_cars.head(10)
 
---Bar Chart for Top 10 Car Brand
---Top 10 Car Brands
+### Bar Chart for Top 10 Car Brand
 top_10_brands = df_cars['Car Brand'].value_counts().head(10)
-#plot the Bar Chart
+
 plt.figure(figsize=(12,8))
+
 sns.barplot(x=top_10_brands.index, y=top_10_brands.values)
+
 plt.title('Top 10 Car Brands')
+
 plt.xlabel('Car Brand')
+
 plt.ylabel('Count')
 
---Top 10 Countries
+### Top 10 Countries
 top_10_counties = df_cars['Country'].value_counts().head(10)
 
---Plot Top 10 Counties
 plt.figure(figsize=(15,5))
+
 top_10_counties.plot(kind = 'barh', color = 'red', edgecolor = 'black')
+
 plt.title('Top 10 Countries')
+
 plt.xlabel('Countries')
+
 plt.ylabel('Count')
 
 
---Top 3 revenue genrating Brand
+### Top 3 revenue genrating Brand Pie Chart
 top_3_brand = df_cars.groupby('Car Brand')['Price'].sum().nlargest(3)
---Pie Chart
+
 plt.figure(figsize=(5,5))
+
 plt.pie(top_3_brand, labels = top_3_brand.index, autopct = '%1.1f%%', startangle = 90)
 
 
---Revenue by year
+### Revenue by year
 years_revenue = df_cars.groupby('Year of Manufacture')['Price'].sum()
+
 sns.lineplot(x=years_revenue.index, y=years_revenue.values,marker='o', color='blue')
+
 plt.title('Revenue by Year')
+
 plt.xlabel('Year')
+
 plt.ylabel('Revenue')
 
---Yearwise carcolorwise revenue stacked bar chart
+### Yearwise carcolorwise revenue stacked bar chart
 year_brand_revenue = df_cars.groupby(['Year of Manufacture', 'Car Color'])['Price'].sum().unstack()
+
 year_brand_revenue.plot(kind='bar', stacked=True, figsize=(16,10))
+
 plt.title('Total Revenue by Year and Car Color')
+
 plt.xlabel('Year of Manufacture')
+
 plt.ylabel('Revenue')
+
 plt.show()
 
 
---Donut chart for credit type
+### Donut chart for credit type
 credit_type_counts = df_cars['Credit Card Type'].value_counts()
+
 plt.figure(figsize=(7, 16))
+
 plt.pie(credit_type_counts.values, labels = credit_type_counts.index, autopct = '%1.1f%%', startangle = 90)
+
 center_circle = plt.Circle((0, 0), 0.70, fc='white')
+
 fig = plt.gcf()
+
 fig.gca().add_artist(center_circle)
+
 plt.title('Credit Card Type Distribution')
+
 plt.show()
 
---Top 10 country revenue generati g countries
+### Top 10 country revenue generati g countries
 country_revenue = df_cars.groupby('Country')['Price'].sum().head(10)
+
 plt.figure(figsize=(10, 6))
+
 sns.barplot(y=country_revenue.index, x=country_revenue.values, palette='cubehelix')
+
 plt.title('Total Revenue by Country')
+
 plt.ylabel('Country')
+
 plt.xlabel('Revenue')
+
 plt.xticks(rotation=90)
 
---Top 10 Selling car by color
+### Top 10 Selling car by color
 top_10_color = df_cars['Car Color'].value_counts().head(10)
---plot
+
 plt.figure(figsize=(12,8))
+
 sns.barplot(x=top_10_color.index, y=top_10_color.values, palette= 'Set2')
+
 plt.ylabel = ('Revenue')
+
 plt.title('Top 10 Selling Car by Color')
 
 
