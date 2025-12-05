@@ -29,6 +29,7 @@ Format: CSV (Comma-Separated Values)
 
 🔍 Data Summary
 
+<a href="cars-dataset.csv">Download dataset Here</a>
 All 30,000 records are complete (no missing values).
 
 Mix of categorical and numerical features:
